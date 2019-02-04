@@ -161,8 +161,6 @@ module.exports = function(app, db) {
             if (result !== null) {
                 var newsData = JSON.parse(result);
 
-                console.log('redis')
-
                 var apiResult = {};
 
                 apiResult.meta = {
