@@ -11,6 +11,12 @@ client    = redis.createClient({
 moment.locale('az');
 
 module.exports = function(app, db) {
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+    
     app.get('/news/last50news', (req, res) => {
         // query to run
         var sql = 'select n.id, n.title, n.news_img, n.news_date, n.fb_desc from news n where n.enabled = 1 order by id desc limit 50';
