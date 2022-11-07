@@ -1,12 +1,13 @@
 var moment = require("moment");
 var redis = require("redis");
 var slug = require("slug");
+var dotenv = require('dotenv')
+dotenv.config();
 
 client = redis.createClient({
-  port: 6379, // replace with your port
-  host: "***REMOVED***", // replace with your hostanme or IP address
-  password:
-    "yourlongredispassword", // replace with your password
+  port: process.env.REDIS_PORT,
+  host: process.env.REDIS_HOST,
+  password: process.env.REDIS_PASSWORD,
 });
 
 moment.locale("az");
