@@ -1,12 +1,14 @@
-var mysql = require('mysql');
+var mysql = require("mysql");
+var dotenv = require('dotenv')
+dotenv.config();
 
 var connection = mysql.createConnection({
-    host: '***REMOVED***',
-    port: 3306,
-    user: 'temalist',
-    password: 'password',
-    database: 'temalist',
-    insecureAuth: true
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  insecureAuth: true,
 });
 
 connection.connect();
